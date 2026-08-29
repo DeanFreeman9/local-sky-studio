@@ -1,54 +1,48 @@
-LOCAL SKY STUDIO — WINDOWS DESKTOP APP
+LOCAL SKY STUDIO
 
 Created by Dean Freeman
 Contact: deanfreeman9@gmail.com
 
-RUN DURING DEVELOPMENT
+ABOUT THE APP
 
-1. Install Node.js 22 or newer.
-2. Run: npm install
-3. Run: npm start
+Local Sky Studio creates printable star maps for a date, time and location. It
+runs locally on your Windows PC and does not require Node.js, a web browser, a
+Google API key or a paid account.
 
-The desktop window uses only bundled files. The older browser/server version is
-still available with: npm run start:web
+SYSTEM REQUIREMENTS
 
-CREATE A WINDOWS INSTALLER
+- Windows 10 or Windows 11, 64-bit
+- Approximately 400 MB of free disk space
 
-Run: npm run dist:win
+HOW TO INSTALL
 
-The installer is written to dist/Local-Sky-Studio-Setup-<version>.exe. Users can
-install it without installing Node.js.
+1. Download Local-Sky-Studio-Setup-1.0.0.exe using the private link supplied by
+   Dean Freeman.
+2. When the download finishes, double-click the installer.
+3. Follow the installation steps and choose an installation folder if desired.
+4. Open Local Sky Studio using its desktop shortcut or the Windows Start menu.
 
-ENABLE SAFE AUTOMATIC UPDATES
+WINDOWS SECURITY MESSAGE
 
-Updates are intentionally disabled for the private GitHub Releases repository.
-This prevents users seeing update buttons that cannot authenticate successfully.
+The current installer may show a Microsoft Defender SmartScreen warning because
+it has not yet been signed with a commercial Windows code-signing certificate.
+Only continue if the installer came directly from Dean Freeman or from a private
+download link he supplied. Never install a copy received from an unknown source.
 
-1. The private repository is DeanFreeman9/local-sky-studio.
-2. Keep update-config.json disabled while releases are private. Do not embed a
-   GitHub token in the app; users could extract it and access the repository.
-3. Increase package.json "version" for every release (for example, 1.0.0 to
-   1.0.1), then rebuild the installer.
-4. Publish every file generated for that version in dist, especially the .exe,
-   latest.yml and its .blockmap file, in one GitHub Release.
+If Windows shows “Windows protected your PC”, choose “More info”, check that the
+app is Local Sky Studio, and then choose “Run anyway”.
 
-For automated publishing, create a GitHub personal access token with permission
-to publish releases, set it as the GH_TOKEN environment variable, and run:
-npm run release:win. Never put the token in .env or commit it to the project.
+UPDATES
 
-Installed builds check shortly after launch. If GitHub reports a newer version,
-the app shows a Download update button. It downloads only after the user clicks,
-then shows Restart and install. Development builds never check for updates.
+Dean Freeman will provide a new private download link when an update is ready.
+Download the newer installer and run it. Your existing installation will be
+updated. You do not need to uninstall the previous version first.
 
-For public distribution, sign the Windows installer and application with a
-trusted code-signing certificate. Unsigned apps may trigger Microsoft
-SmartScreen warnings, and signing is strongly recommended before relying on
-automatic updates for end users.
+UNINSTALLING
 
-WEB VERSION
+Open Windows Settings, choose Apps, find Local Sky Studio, and select Uninstall.
 
-Run npm run start:web, then open http://localhost:3000. The map and exports run
-locally and do not use a Google API, API key, billing account, or external
-location lookup.
+SUPPORT
 
-Milky Way shading uses the bundled D3 library and D3-Celestial mw.json data.
+For access, installation help or questions, contact:
+Dean Freeman — deanfreeman9@gmail.com

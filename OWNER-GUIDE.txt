@@ -1,0 +1,56 @@
+LOCAL SKY STUDIO — OWNER AND RELEASE GUIDE
+
+Created by Dean Freeman
+Contact: deanfreeman9@gmail.com
+
+PRIVATE DISTRIBUTION
+
+The private source repository is:
+https://github.com/DeanFreeman9/local-sky-studio
+
+A private GitHub repository cannot provide downloads to people who do not have
+a GitHub account. GitHub collaborators must have an account, be invited by you,
+and sign in before they can view or download a private release.
+
+For a recipient without GitHub, download the installer yourself and send it by
+one of these methods:
+
+- Attach it to a suitable private file-transfer service.
+- Upload it to OneDrive, Dropbox or Google Drive and create a restricted or
+  expiring share link.
+- Copy it to a USB drive and give it to the recipient directly.
+
+A normal “anyone with the link” share is not identity-based security. The link
+can be forwarded. For stronger control, use a service that requires the named
+recipient's email address, a password, or an expiry date.
+
+RUN DURING DEVELOPMENT
+
+1. Install Node.js 22 or newer.
+2. Run: npm install
+3. Run: npm start
+
+The older browser/server version is available with: npm run start:web
+
+CREATE A WINDOWS INSTALLER
+
+Run: npm run dist:win
+
+The installer and release metadata are written to the dist folder.
+
+PUBLISH A NEW VERSION
+
+1. Change the version in package.json, for example from 1.0.0 to 1.0.1.
+2. Run npm install so package-lock.json receives the same version.
+3. Test the app with npm start.
+4. Run npm run dist:win.
+5. Commit and push the source changes.
+6. Create a private GitHub Release with a matching tag, such as v1.0.1.
+7. Attach the generated installer, latest.yml and .blockmap files.
+
+Keep update-config.json disabled while releases are private. Never embed your
+GitHub token in the application because users could extract it and gain access
+to your repository.
+
+Before broad distribution, sign the Windows installer and application with a
+trusted code-signing certificate to reduce Microsoft SmartScreen warnings.
