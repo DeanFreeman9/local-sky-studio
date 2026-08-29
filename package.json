@@ -1,0 +1,60 @@
+{
+  "name": "local-sky-studio",
+  "productName": "Local Sky Studio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Create printable, date-accurate star maps on your own computer.",
+  "author": {
+    "name": "Dean Freeman",
+    "email": "deanfreeman9@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DeanFreeman9/local-sky-studio.git"
+  },
+  "main": "electron-main.js",
+  "scripts": {
+    "start": "electron .",
+    "start:web": "node server.js",
+    "dist:win": "node scripts/build-windows.js",
+    "release:win": "node scripts/build-windows.js --publish"
+  },
+  "dependencies": {
+    "d3": "^7.9.0",
+    "electron-updater": "^6.8.9",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "electron": "^44.0.0",
+    "electron-builder": "^26.15.3"
+  },
+  "build": {
+    "appId": "com.deanfreeman.localskystudio",
+    "copyright": "Copyright © 2026 Dean Freeman",
+    "files": [
+      "electron-main.js",
+      "electron-preload.js",
+      "public/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "update-config.json",
+        "to": "update-config.json"
+      }
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis",
+      "artifactName": "Local-Sky-Studio-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
