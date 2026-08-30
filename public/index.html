@@ -367,7 +367,14 @@
       <main class="canvas-area">
         <div id="error" class="notice error hidden" role="alert"></div>
         <div id="notice" class="notice hidden" role="status"></div>
-        <div class="stage">
+        <div class="preview-toolbar" aria-label="Preview zoom controls">
+          <button id="zoom-out" class="button" type="button" aria-label="Zoom out">−</button>
+          <input id="preview-zoom" type="range" min="50" max="200" step="10" value="100" aria-label="Preview zoom" />
+          <output id="preview-zoom-out" for="preview-zoom">100%</output>
+          <button id="zoom-in" class="button" type="button" aria-label="Zoom in">+</button>
+          <button id="zoom-reset" class="button" type="button">Reset</button>
+        </div>
+        <div class="stage" id="preview-stage">
           <div id="map" class="map-wrap" aria-label="Generated sky map"></div>
         </div>
         <div class="statbar">
@@ -15159,6 +15166,33 @@ J2000 star positions and constellation line/name data adapted from D3-Celestial,
         };
         setupEditorPages();
         restoreStyleDefaults();
+        const previewZoom = $("preview-zoom"),
+          previewZoomOutput = $("preview-zoom-out"),
+          previewMap = $("map");
+        function setPreviewZoom(value) {
+          const zoom = Math.max(50, Math.min(200, Number(value)));
+          previewZoom.value = zoom;
+          previewZoomOutput.value = `${zoom}%`;
+          previewMap.style.width = `min(${zoom}%, ${(690 * zoom) / 100}px)`;
+          $("zoom-out").disabled = zoom <= 50;
+          $("zoom-in").disabled = zoom >= 200;
+        }
+        previewZoom.addEventListener("input", () => setPreviewZoom(previewZoom.value));
+        $("zoom-out").onclick = () => setPreviewZoom(Number(previewZoom.value) - 10);
+        $("zoom-in").onclick = () => setPreviewZoom(Number(previewZoom.value) + 10);
+        $("zoom-reset").onclick = () => setPreviewZoom(100);
+        $("preview-stage").addEventListener(
+          "wheel",
+          (event) => {
+            if (!event.ctrlKey && !event.metaKey) return;
+            event.preventDefault();
+            setPreviewZoom(
+              Number(previewZoom.value) + (event.deltaY < 0 ? 10 : -10),
+            );
+          },
+          { passive: false },
+        );
+        setPreviewZoom(100);
         loadHevelius();
         fetch("mw.json")
           .then((response) => {
