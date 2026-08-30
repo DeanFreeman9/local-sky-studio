@@ -1,48 +1,32 @@
-LOCAL SKY STUDIO
+LOCAL SKY STUDIO — WEB VERSION
 
 Created by Dean Freeman
 Contact: deanfreeman9@gmail.com
 
-ABOUT THE APP
+OPEN THE WEBSITE
 
-Local Sky Studio creates printable star maps for a date, time and location. It
-runs locally on your Windows PC and does not require Node.js, a web browser, a
-Google API key or a paid account.
+https://deanfreeman9.github.io/local-sky-studio/
 
-SYSTEM REQUIREMENTS
+Local Sky Studio runs directly in a modern web browser. There is nothing to
+install and no Windows .exe file. You do not need Node.js, GitHub or a paid
+account to use the website.
 
-- Windows 10 or Windows 11, 64-bit
-- Approximately 400 MB of free disk space
+HOW TO USE IT
 
-HOW TO INSTALL
+1. Open the website in Edge, Chrome, Firefox or Safari.
+2. Enter a date, local time, latitude, longitude and time zone.
+3. Adjust the map style and artwork settings.
+4. Select Download PNG or Download SVG to save the finished star map.
 
-1. Download Local-Sky-Studio-Setup-1.0.0.exe using the private link supplied by
-   Dean Freeman.
-2. When the download finishes, double-click the installer.
-3. Follow the installation steps and choose an installation folder if desired.
-4. Open Local Sky Studio using its desktop shortcut or the Windows Start menu.
-
-WINDOWS SECURITY MESSAGE
-
-The current installer may show a Microsoft Defender SmartScreen warning because
-it has not yet been signed with a commercial Windows code-signing certificate.
-Only continue if the installer came directly from Dean Freeman or from a private
-download link he supplied. Never install a copy received from an unknown source.
-
-If Windows shows “Windows protected your PC”, choose “More info”, check that the
-app is Local Sky Studio, and then choose “Run anyway”.
+The calculations and image generation happen in your browser. The website does
+not request your device location and does not use a Google API key.
 
 UPDATES
 
-Dean Freeman will provide a new private download link when an update is ready.
-Download the newer installer and run it. Your existing installation will be
-updated. You do not need to uninstall the previous version first.
-
-UNINSTALLING
-
-Open Windows Settings, choose Apps, find Local Sky Studio, and select Uninstall.
+Updates appear automatically the next time you open or refresh the website. You
+do not need to download or install updates.
 
 SUPPORT
 
-For access, installation help or questions, contact:
+For help or questions, contact:
 Dean Freeman — deanfreeman9@gmail.com

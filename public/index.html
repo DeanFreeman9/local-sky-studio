@@ -365,10 +365,6 @@
         </div>
       </aside>
       <main class="canvas-area">
-        <div id="desktop-update" class="notice update-notice hidden" role="status">
-          <span id="desktop-update-message"></span>
-          <button id="desktop-update-action" class="button hidden" type="button"></button>
-        </div>
         <div id="error" class="notice error hidden" role="alert"></div>
         <div id="notice" class="notice hidden" role="status"></div>
         <div class="stage">
@@ -384,11 +380,10 @@
     <dialog id="help">
       <button id="close-help" class="button dialog-close">Close</button>
       <h2>Your offline sky studio</h2>
-      <h3>Windows 11: getting started</h3>
+      <h3>Getting started</h3>
       <ol>
         <li>
-          Start the local server and open http://localhost:3000 in Microsoft
-          Edge or Chrome.
+          Open Local Sky Studio in a modern web browser using the website link.
         </li>
         <li>
           Enter a date, local time, latitude, longitude and time zone. The sky
@@ -15164,35 +15159,6 @@ J2000 star positions and constellation line/name data adapted from D3-Celestial,
         };
         setupEditorPages();
         restoreStyleDefaults();
-        if (window.desktopUpdates) {
-          const updateBox = $("desktop-update"),
-            updateMessage = $("desktop-update-message"),
-            updateAction = $("desktop-update-action");
-          window.desktopUpdates.onStatus(({ status, version, percent, message }) => {
-            updateAction.classList.add("hidden");
-            if (status === "available") {
-              updateBox.classList.remove("hidden");
-              updateMessage.textContent = `Local Sky Studio ${version} is available.`;
-              updateAction.textContent = "Download update";
-              updateAction.onclick = () => window.desktopUpdates.download();
-              updateAction.classList.remove("hidden");
-            } else if (status === "downloading") {
-              updateBox.classList.remove("hidden");
-              updateMessage.textContent = `Downloading update… ${percent}%`;
-            } else if (status === "downloaded") {
-              updateBox.classList.remove("hidden");
-              updateMessage.textContent = `Version ${version} is ready to install.`;
-              updateAction.textContent = "Restart and install";
-              updateAction.onclick = () => window.desktopUpdates.install();
-              updateAction.classList.remove("hidden");
-            } else if (status === "error") {
-              updateBox.classList.remove("hidden");
-              updateMessage.textContent = `Update check failed: ${message}`;
-            } else if (status === "not-available") {
-              updateBox.classList.add("hidden");
-            }
-          });
-        }
         loadHevelius();
         fetch("mw.json")
           .then((response) => {
